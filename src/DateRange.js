@@ -45,7 +45,10 @@ class DateRange extends Component {
     const { onChange } = this.props
     range = this.orderRange(range);
 
-    this.setState({ range });
+    this.setState({
+      range: range,
+      link: this.props.linkedCalendars && range.endDate
+    });
 
     onChange && onChange(range, source);
   }
