@@ -109,7 +109,7 @@ class DayCell extends Component {
     return (
       <span
         className="rdr-DayWrapper"
-        style={onlyClasses ? undefined : dayWrapperStyles }>
+        style={onlyClasses ? undefined : dayWrapperStyles }
         onClick={ this.handleSelect.bind(this) }>
         <span
           onMouseEnter={ this.handleMouseEvent.bind(this) }
