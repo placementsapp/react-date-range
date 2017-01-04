@@ -87,6 +87,7 @@ class MyComponent extends Component {
 * **onChange:** *(Function)* default: none
 * **linkedCalendars:** *(Boolean)* default: false
 * **calendars:** *(Number)* default: 2
+* **showMonthArrow:** *(Boolean)* default: true - only two end arrows shown on linked calendar
 * **ranges:** *(Object)* default: none
 * **minDate:** *(String, Moment.js object, Function)* default: none
 * **maxDate:** *(String, Moment.js object, Function)* default: none
