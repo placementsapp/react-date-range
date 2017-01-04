@@ -132,9 +132,11 @@ class DateRange extends Component {
           const _calendars = [];
           const _method = offsetPositive ? 'unshift' : 'push';
           for (var i = Number(calendars) - 1; i >= 0; i--) {
+            var isInterior = (i != 0 && Number(calendars))
             _calendars[_method](
               <Calendar
-                showMonthArrow={ showMonthArrow }
+                showPrevMonthArrow={ linkedCalendars ? showMonthArrow && ( i === Number(calendars)-1) : showMonthArrow }
+                showNextMonthArrow={ linkedCalendars ? showMonthArrow && ( i ===  0) : showMonthArrow }
                 shownDate={ shownDate }
                 disableDaysBeforeToday={ disableDaysBeforeToday }
                 lang={ lang }
@@ -167,7 +169,8 @@ DateRange.defaultProps = {
   calendars       : 2,
   onlyClasses     : false,
   offsetPositive  : false,
-  classNames      : {}
+  classNames      : {},
+  showMonthArrow  : true
 }
 
 DateRange.propTypes = {

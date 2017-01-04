@@ -106,14 +106,14 @@ class Calendar extends Component {
     let month           = moment.months(shownDate.month());
     const year            = shownDate.year();
     const { styles }      = this;
-    const { onlyClasses, lang, showMonthArrow} = this.props;
+    const { onlyClasses, lang, showPrevMonthArrow, showNextMonthArrow} = this.props;
 
     month = lang ? LangDic[lang][month.toLowerCase()] : month;
 
     return (
       <div style={onlyClasses ? undefined : styles['MonthAndYear']} className={classes.monthAndYearWrapper}>
         {
-          showMonthArrow ?
+          showPrevMonthArrow ?
           <button
             style={onlyClasses ? undefined : { ...styles['MonthButton'], float : 'left' }}
             className={classes.prevButton}
@@ -127,7 +127,7 @@ class Calendar extends Component {
           <span className={classes.year}>{year}</span>
         </span>
         {
-          showMonthArrow ?
+          showNextMonthArrow ?
           <button
             style={onlyClasses ? undefined : { ...styles['MonthButton'], float : 'right' }}
             className={classes.nextButton}
@@ -256,14 +256,16 @@ class Calendar extends Component {
 Calendar.defaultProps = {
   format      : 'DD/MM/YYYY',
   theme       : {},
-  showMonthArrow: true,
+  showPrevMonthArrow: true,
+  showNextMonthArrow: true,
   disableDaysBeforeToday: false,
   onlyClasses : false,
   classNames  : {}
 }
 
 Calendar.propTypes = {
-  showMonthArrow : PropTypes.bool,
+  showPrevMonthArrow : PropTypes.bool,
+  showNextMonthArrow : PropTypes.bool,
   disableDaysBeforeToday : PropTypes.bool,
   lang           : PropTypes.string,
   sets           : PropTypes.string,
