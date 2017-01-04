@@ -101,7 +101,11 @@ $calendar-shadow: rgba($calendar-color, 0.25) 0 0 1em !default;
     text-align: center;
     letter-spacing: initial;
 }
-
+.rdr-DayWrapper {
+  display: inline-block;
+  width: $cell-size;
+  height: $cell-size;
+}
 .rdr-Day {
     font-size: 12px;
     line-height: $cell-size;
