@@ -49,17 +49,14 @@ class DayCell extends Component {
 
     this.props.onSelect(this.props.dayMoment);
   }
-
   getStateStyles() {
     const { hover, active } = this.state;
-    const { isSelected, isInRange, isPassive, isStartEdge, isEndEdge, dayMoment, isToday, isSunday } = this.props;
+    const { isSelected, isInRange, isPassive, dayMoment, isToday, isSunday } = this.props;
     const { styles } = this;
 
     const hoverStyle    = hover ? styles['DayHover'] : {};
     const activeStyle   = active ? styles['DayActive'] : {};
     const passiveStyle  = isPassive ? styles['DayPassive'] : {};
-    const startEdgeStyle = isStartEdge ? styles['DayStartEdge'] : {};
-    const endEdgeStyle   = isEndEdge ? styles['DayEndEdge'] : {};
     const selectedStyle = isSelected ? styles['DaySelected'] : {};
     const inRangeStyle  = isInRange ? styles['DayInRange'] : {};
     const todayStyle    = isToday ? styles['DayToday'] : {};
@@ -72,24 +69,20 @@ class DayCell extends Component {
       ...hoverStyle,
       ...passiveStyle,
       ...activeStyle,
-      ...selectedStyle,
-      ...startEdgeStyle,
-      ...endEdgeStyle
+      ...selectedStyle
     };
   }
 
   getClassNames(classes) {
-    const { isSelected, isInRange, isPassive, isStartEdge, isEndEdge, isToday, isSunday } = this.props;
+    const { isSelected, isInRange, isPassive, isToday, isSunday } = this.props;
 
     return classnames({
       [classes.day]       : true,
       [classes.dayActive] : isSelected,
       [classes.dayPassive]: isPassive,
       [classes.dayInRange]: isInRange,
-      [classes.dayStartEdge] : isStartEdge,
-      [classes.dayEndEdge] : isEndEdge,
       [classes.dayToday] : isToday,
-      [classes.daySunday]: isSunday,
+      [classes.daySunday]: isSunday
     });
 
   }

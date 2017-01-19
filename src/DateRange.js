@@ -66,6 +66,10 @@ class DateRange extends Component {
       endDate   : endDate
     };
 
+    if ( date.isBefore(range.startDate) ) {
+      this.step = 0;
+    }
+
     switch (this.step) {
       case 0:
         range['startDate'] = date;

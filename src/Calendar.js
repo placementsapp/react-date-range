@@ -7,8 +7,7 @@ import getTheme, { defaultClasses } from './styles.js';
 
 function checkRange(dayMoment, range) {
   return (
-    dayMoment.isBetween(range['startDate'], range['endDate']) ||
-    dayMoment.isBetween(range['endDate'], range['startDate'])
+    dayMoment.isBetween(range['startDate'], range['endDate'], null, '[]')
   )
 }
 
@@ -210,9 +209,6 @@ class Calendar extends Component {
       const { dayMoment, isPassive } = data;
       const isSelected    = !range && (dayMoment.unix() === dateUnix);
       const isInRange     = range && checkRange(dayMoment, range);
-      const isStartEdge   = range && checkStartEdge(dayMoment, range);
-      const isEndEdge     = range && checkEndEdge(dayMoment, range);
-      const isEdge        = isStartEdge || isEndEdge;
       const isToday       = today.isSame(dayMoment);
       const isSunday      = dayMoment.day() === 0;
       const isOutsideMinMax = isOusideMinMax(dayMoment, minDate, maxDate, format);
@@ -222,9 +218,7 @@ class Calendar extends Component {
           onSelect={ this.handleSelect.bind(this) }
           { ...data }
           theme={ styles }
-          isStartEdge = { isStartEdge }
-          isEndEdge = { isEndEdge }
-          isSelected={ isSelected || isEdge }
+          isSelected={ isSelected }
           isInRange={ isInRange }
           isSunday={ isSunday }
           isToday={ isToday }
